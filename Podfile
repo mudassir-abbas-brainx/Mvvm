@@ -6,7 +6,7 @@ target 'Git Testing' do
   use_frameworks!
 
 pod 'Kingfisher', '~> 5.0'
-
+pod 'Alamofire'
 
   # Pods for Git Testing
 

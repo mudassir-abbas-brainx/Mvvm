@@ -14,34 +14,20 @@ class ListViewModel: NSObject {
     private var pictures: [Picture] = [Picture](){
         didSet {
 //            self.reloadTableViewClosure?()
-            DispatchQueue.main.async{
-                self.tableView.reloadData()
-            }
         }
     }
-    var tableView:UITableView!
     // MARK: - Closures
     var reloadTableViewClosure: (()->())?
+    var didSelectCellClosure: ((Picture)->())?
     
     //MARK:- FUNCTIONS
-    init(tableView:UITableView) {
+    init(pictures: [Picture]) {
+        self.pictures = pictures
         self.apiService = FakeAPIService()
-        self.tableView = tableView
     }
     
     
-    // MARK: - Fetching functions
-    
-    func fetchData() {
-        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
-            
-            if let error = error {
-                print ("Error: \(error.rawValue)")
-            } else {
-                self?.pictures = pictures
-            }
-        }
-    }
+   
 }
 
 
@@ -65,6 +51,6 @@ extension ListViewModel: UITableViewDataSource{
 extension ListViewModel:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.didSelectCellClosure?(self.pictures[indexPath.row])
     }
 }
