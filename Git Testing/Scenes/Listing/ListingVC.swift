@@ -40,16 +40,15 @@ class ListingVC: UIViewController {
     
     // MARK: - Fetching Data
     func fetchData() {
-        self.pictures = []
         let apiService =  FakeAPIService()
-//        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
-//            
-//            if let error = error {
-//                print ("Error: \(error.rawValue)")
-//            } else {
-//                self?.pictures = pictures
-//            }
-//        }
+        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
+            
+            if let error = error {
+                print ("Error: \(error.rawValue)")
+            } else {
+                self?.pictures = pictures
+            }
+        }
     }
     
 }
