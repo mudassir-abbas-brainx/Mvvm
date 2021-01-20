@@ -18,8 +18,6 @@
 		C777829A25B0687400EFCDA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C777829825B0687400EFCDA5 /* LaunchScreen.storyboard */; };
 		C77782A525B0687400EFCDA5 /* Git_TestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77782A425B0687400EFCDA5 /* Git_TestingTests.swift */; };
 		C77782B025B0687400EFCDA5 /* Git_TestingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77782AF25B0687400EFCDA5 /* Git_TestingUITests.swift */; };
-		C79F533B25B6C08B001A24E1 /* ALFWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79F533A25B6C08B001A24E1 /* ALFWebService.swift */; };
-		C7B0C1BC25B6C3D6003A6470 /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B0C1BB25B6C3D6003A6470 /* APIPath.swift */; };
 		C7B0C1C625B6C868003A6470 /* PictureDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B0C1C525B6C868003A6470 /* PictureDetailVC.swift */; };
 		C7E447FE25B597780067513D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E447FD25B597780067513D /* ListViewModel.swift */; };
 		C7E4480425B597A80067513D /* FakeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4480325B597A80067513D /* FakeAPIService.swift */; };
@@ -71,8 +69,6 @@
 		C77782AB25B0687400EFCDA5 /* Git TestingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Git TestingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77782AF25B0687400EFCDA5 /* Git_TestingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Git_TestingUITests.swift; sourceTree = "<group>"; };
 		C77782B125B0687400EFCDA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C79F533A25B6C08B001A24E1 /* ALFWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFWebService.swift; sourceTree = "<group>"; };
-		C7B0C1BB25B6C3D6003A6470 /* APIPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
 		C7B0C1C525B6C868003A6470 /* PictureDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureDetailVC.swift; sourceTree = "<group>"; };
 		C7E447FD25B597780067513D /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		C7E4480325B597A80067513D /* FakeAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAPIService.swift; sourceTree = "<group>"; };
@@ -256,8 +252,6 @@
 			children = (
 				C7E4480A25B597CB0067513D /* fakecontents.json */,
 				C7E4480325B597A80067513D /* FakeAPIService.swift */,
-				C79F533A25B6C08B001A24E1 /* ALFWebService.swift */,
-				C7B0C1BB25B6C3D6003A6470 /* APIPath.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -519,9 +513,7 @@
 			files = (
 				C7E4481225B598960067513D /* Picture.swift in Sources */,
 				C71F22BC25B6CA1D00542CDC /* ListingVC.swift in Sources */,
-				C7B0C1BC25B6C3D6003A6470 /* APIPath.swift in Sources */,
 				C777828E25B0687000EFCDA5 /* AppDelegate.swift in Sources */,
-				C79F533B25B6C08B001A24E1 /* ALFWebService.swift in Sources */,
 				C7E4480425B597A80067513D /* FakeAPIService.swift in Sources */,
 				C7E4481C25B599400067513D /* Enums.swift in Sources */,
 				C7B0C1C625B6C868003A6470 /* PictureDetailVC.swift in Sources */,

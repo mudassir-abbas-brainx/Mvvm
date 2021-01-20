@@ -13,7 +13,7 @@ class ListingVC: UIViewController {
     @IBOutlet var tableView:UITableView!
     
     //MARK:- PROPERTIES
-    var viewModel: ListViewModel!
+    var viewModel: ListViewModel?
     private var pictures: [Picture] = [Picture](){
         didSet {
             viewModel = ListViewModel(pictures: pictures)
@@ -22,7 +22,7 @@ class ListingVC: UIViewController {
                 self.tableView.dataSource = self.viewModel
                 self.tableView.reloadData()
             }
-            viewModel.didSelectCellClosure = { picture in
+            viewModel?.didSelectCellClosure = { picture in
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PictureDetailVC") as! PictureDetailVC
                 vc.picture = picture
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -30,7 +30,7 @@ class ListingVC: UIViewController {
         }
     }
     
-    //MARK:- FUNCTIONS
+    //MARK:- View Controller Lifecycle FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,15 +40,16 @@ class ListingVC: UIViewController {
     
     // MARK: - Fetching Data
     func fetchData() {
+        self.pictures = []
         let apiService =  FakeAPIService()
-        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
-            
-            if let error = error {
-                print ("Error: \(error.rawValue)")
-            } else {
-                self?.pictures = pictures
-            }
-        }
+//        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
+//            
+//            if let error = error {
+//                print ("Error: \(error.rawValue)")
+//            } else {
+//                self?.pictures = pictures
+//            }
+//        }
     }
     
 }

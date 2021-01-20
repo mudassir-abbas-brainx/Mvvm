@@ -8,15 +8,13 @@
 import UIKit
 
 class PictureDetailVC: UIViewController {
-
+    //MARK:- IBOUTLETS
     @IBOutlet weak var theImageView: UIImageView!
     
-    var picture: Picture! {
-        didSet{
-//            _ = PictureDetailViewModel(picture: picture, viewController: self)
-        }
-    }
+    //MARK:- PROPERTIES
+    var picture: Picture!
     
+    //MARK:- View Controller Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
         if let data = picture {
@@ -26,16 +24,5 @@ class PictureDetailVC: UIViewController {
         }
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

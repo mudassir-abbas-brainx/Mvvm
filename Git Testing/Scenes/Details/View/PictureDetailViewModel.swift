@@ -17,6 +17,7 @@ class PictureDetailViewModel: NSObject {
         }
     }
     
+    //MARK:- INITIALIZER
     init(picture:Picture,viewController:UIViewController) {
         self.picture = picture
         self.view = viewController
