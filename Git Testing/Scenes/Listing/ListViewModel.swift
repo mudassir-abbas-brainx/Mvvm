@@ -21,12 +21,16 @@ class ListViewModel: NSObject {
     lazy var heightForRow:CGFloat = {
         return CGFloat(150)
     }()
+    var listRouter:ListRouter?
+    weak var view:UIViewController?
     //MARK: - CLOSURE
     var reloadTableviewClosure:(()->())?
     
     //MARK:- Initializer
     init(view:UIViewController) {
         super.init()
+        self.view = view
+        listRouter = ListRouter(viewController: self.view)
         fetchData()
     }
     
@@ -49,6 +53,10 @@ extension ListViewModel{
     //MARK: -  RETURN OBJECT AT SPECIFIC INDEX
     func object(for indexPath:IndexPath)->Picture{
         return self.pictures[indexPath.row]
+    }
+    
+    func navigateToDetailVC(indexPath:IndexPath){
+        listRouter?.pushVC(picture: self.object(for: indexPath))
     }
 }
 
