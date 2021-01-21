@@ -152,7 +152,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZDd-yH-SVP"/>
                     <connections>
-                        <outlet property="theImageView" destination="4a5-CO-m5d" id="JKE-N5-hOS"/>
+                        <outlet property="productImageView" destination="4a5-CO-m5d" id="JNc-ZC-b1d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tur-4k-SsY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

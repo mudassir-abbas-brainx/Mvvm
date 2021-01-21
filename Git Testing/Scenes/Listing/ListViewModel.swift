@@ -10,47 +10,47 @@ import UIKit
 
 class ListViewModel: NSObject {
     //MARK: - PROPERTIES
-    private let apiService: FakeAPIServiceProtocol
-    private var pictures: [Picture] = [Picture](){
-        didSet {
-//            self.reloadTableViewClosure?()
+    private var pictures: [Picture]  = [Picture](){
+        didSet{
+            self.reloadTableviewClosure?()
         }
     }
-    // MARK: - Closures
-    var reloadTableViewClosure: (()->())?
-    var didSelectCellClosure: ((Picture)->())?
+    lazy var numberOfRows:Int = {
+        return pictures.count
+    }()
+    lazy var heightForRow:CGFloat = {
+        return CGFloat(150)
+    }()
     
-    //MARK:- FUNCTIONS
-    init(pictures: [Picture]) {
-        self.pictures = pictures
-        self.apiService = FakeAPIService()
+    //MARK: - CLOSURE
+    var reloadTableviewClosure:(()->())?
+    
+    //MARK:- Initializer
+    override init() {
+        super.init()
+        fetchData()
     }
     
-    
+    //MARK:- LOAD Data From Api
+    func fetchData() {
+        let apiService =  FakeAPIService()
+        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
+            
+            if let error = error {
+                print ("Error: \(error.rawValue)")
+            } else {
+                self?.pictures = pictures
+            }
+        }
+    }
    
 }
 
+extension ListViewModel{
+    //MARK: -  RETURN OBJECT AT SPECIFIC INDEX
+    func object(for indexPath:IndexPath)->Picture{
+        return self.pictures[indexPath.row]
+    }
+}
 
-extension ListViewModel: UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.pictures.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PictureListTableViewCell") as! PictureListTableViewCell
-        cell.picture = self.pictures[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
-    }
-    
-}
-extension ListViewModel:UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.didSelectCellClosure?(self.pictures[indexPath.row])
-    }
-}
+

@@ -13,44 +13,48 @@ class ListingVC: UIViewController {
     @IBOutlet var tableView:UITableView!
     
     //MARK:- PROPERTIES
-    var viewModel: ListViewModel?
-    private var pictures: [Picture] = [Picture](){
-        didSet {
-            viewModel = ListViewModel(pictures: pictures)
-            DispatchQueue.main.async{
-                self.tableView.delegate = self.viewModel
-                self.tableView.dataSource = self.viewModel
-                self.tableView.reloadData()
-            }
-            viewModel?.didSelectCellClosure = { picture in
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PictureDetailVC") as! PictureDetailVC
-                vc.picture = picture
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-    }
+    lazy var viewModel: ListViewModel = {
+        return ListViewModel()
+    }()
     
     //MARK:- View Controller Lifecycle FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.fetchData()
-    }
-    
-    
-    // MARK: - Fetching Data
-    func fetchData() {
-        let apiService =  FakeAPIService()
-        apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
-            
-            if let error = error {
-                print ("Error: \(error.rawValue)")
-            } else {
-                self?.pictures = pictures
+        //closure called when data fetched
+        viewModel.reloadTableviewClosure = {
+            DispatchQueue.main.async {
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                self.tableView.reloadData()
             }
         }
     }
     
 }
-
-
+//MARK:- TABLEVIEW DATA SOURCE
+extension ListingVC: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PictureListTableViewCell") as! PictureListTableViewCell
+        cell.picture = viewModel.object(for: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return viewModel.heightForRow
+    }
+    
+}
+//MARK:- TABLEVIEW DELEGATES
+extension ListingVC:UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PictureDetailVC") as! PictureDetailVC
+        vc.picture = viewModel.object(for: indexPath)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}

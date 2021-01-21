@@ -9,19 +9,23 @@ import UIKit
 
 class PictureDetailVC: UIViewController {
     //MARK:- IBOUTLETS
-    @IBOutlet weak var theImageView: UIImageView!
+    @IBOutlet weak var productImageView: UIImageView!
     
     //MARK:- PROPERTIES
-    var picture: Picture!
+    var picture: Picture?
+    var viewModel: PictureDetailViewModel?
     
     //MARK:- View Controller Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let data = picture {
-            if let picture_url = URL( string: data.image_url ) {
-                self.theImageView.kf.setImage(with: picture_url)
-            }
-        }
+        guard picture != nil else {return}
+        viewModel = PictureDetailViewModel(picture: picture)
+        showDataOnUi()
+    }
+    
+    //MARK:- SETUP UI
+    func showDataOnUi(){
+        productImageView.kf.setImage(with: viewModel?.productImage)
     }
     
 
