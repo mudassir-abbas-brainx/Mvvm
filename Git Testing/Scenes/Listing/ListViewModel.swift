@@ -21,12 +21,11 @@ class ListViewModel: NSObject {
     lazy var heightForRow:CGFloat = {
         return CGFloat(150)
     }()
-    
     //MARK: - CLOSURE
     var reloadTableviewClosure:(()->())?
     
     //MARK:- Initializer
-    override init() {
+    init(view:UIViewController) {
         super.init()
         fetchData()
     }

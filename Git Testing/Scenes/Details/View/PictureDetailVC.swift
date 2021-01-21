@@ -18,8 +18,6 @@ class PictureDetailVC: UIViewController {
     //MARK:- View Controller Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard picture != nil else {return}
-        viewModel = PictureDetailViewModel(picture: picture)
         showDataOnUi()
     }
     
@@ -27,6 +25,4 @@ class PictureDetailVC: UIViewController {
     func showDataOnUi(){
         productImageView.kf.setImage(with: viewModel?.productImage)
     }
-    
-
 }

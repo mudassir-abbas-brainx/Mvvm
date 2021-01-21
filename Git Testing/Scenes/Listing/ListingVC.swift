@@ -11,16 +11,14 @@ class ListingVC: UIViewController {
     
     //MARK:- IBOUTLETS
     @IBOutlet var tableView:UITableView!
-    
     //MARK:- PROPERTIES
-    lazy var viewModel: ListViewModel = {
-        return ListViewModel()
-    }()
+    var viewModel: ListViewModel!
     
     //MARK:- View Controller Lifecycle FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         //closure called when data fetched
+        viewModel = ListViewModel(view: self)
         viewModel.reloadTableviewClosure = {
             DispatchQueue.main.async {
                 self.tableView.delegate = self
@@ -54,7 +52,7 @@ extension ListingVC:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PictureDetailVC") as! PictureDetailVC
-        vc.picture = viewModel.object(for: indexPath)
+        vc.viewModel = PictureDetailViewModel(picture: viewModel.object(for: indexPath))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

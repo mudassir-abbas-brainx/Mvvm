@@ -12,9 +12,6 @@ class PictureDetailViewModel: NSObject {
     //MARK:- PROPERTIES
     private var picture:Picture?
     lazy var productImage : URL? = {
-        guard picture != nil && picture?.image_url != nil else{
-            return URL(string: "")
-        }
         return URL(string: picture?.image_url ?? "") 
     }()
     //MARK:-View Model Initializer
