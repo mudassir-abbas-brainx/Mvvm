@@ -18,7 +18,8 @@ class ListingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //closure called when data fetched
-        viewModel = ListViewModel(view: self)
+        let router = ListRouter(viewController: self)
+        viewModel = ListViewModel(router: router)
         viewModel.reloadTableviewClosure = {
             DispatchQueue.main.async {
                 self.tableView.delegate = self
@@ -51,8 +52,6 @@ extension ListingVC: UITableViewDataSource{
 extension ListingVC:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PictureDetailVC") as! PictureDetailVC
-        vc.viewModel = PictureDetailViewModel(picture: viewModel.object(for: indexPath))
-        self.navigationController?.pushViewController(vc, animated: true)
+        viewModel.navigateToDetailVC(indexPath: indexPath)
     }
 }

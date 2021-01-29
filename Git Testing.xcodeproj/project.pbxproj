@@ -25,6 +25,7 @@
 		C7E4481225B598960067513D /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4481025B598960067513D /* Picture.swift */; };
 		C7E4481C25B599400067513D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4481B25B599400067513D /* Enums.swift */; };
 		C7E4482425B59FBD0067513D /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4482325B59FBD0067513D /* ListCell.swift */; };
+		C7E6FF7425B9A72200F26758 /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6FF7325B9A72200F26758 /* ListRouter.swift */; };
 		CCFC9324F8D68E933516D2AB /* Pods_Git_Testing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C84037C8A29DA98A0F8B3 /* Pods_Git_Testing.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		C7E4481025B598960067513D /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		C7E4481B25B599400067513D /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C7E4482325B59FBD0067513D /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		C7E6FF7325B9A72200F26758 /* ListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
 		E890F499E9E115F7C1E15BB8 /* Pods-Git Testing-Git TestingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Git Testing-Git TestingUITests.debug.xcconfig"; path = "Target Support Files/Pods-Git Testing-Git TestingUITests/Pods-Git Testing-Git TestingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +245,7 @@
 				C71F22BB25B6CA1D00542CDC /* ListingVC.swift */,
 				C7E447FD25B597780067513D /* ListViewModel.swift */,
 				C7E4482325B59FBD0067513D /* ListCell.swift */,
+				C7E6FF7325B9A72200F26758 /* ListRouter.swift */,
 			);
 			path = Listing;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				C71F22BC25B6CA1D00542CDC /* ListingVC.swift in Sources */,
 				C777828E25B0687000EFCDA5 /* AppDelegate.swift in Sources */,
 				C7E4480425B597A80067513D /* FakeAPIService.swift in Sources */,
+				C7E6FF7425B9A72200F26758 /* ListRouter.swift in Sources */,
 				C7E4481C25B599400067513D /* Enums.swift in Sources */,
 				C7B0C1C625B6C868003A6470 /* PictureDetailVC.swift in Sources */,
 				C7E4482425B59FBD0067513D /* ListCell.swift in Sources */,

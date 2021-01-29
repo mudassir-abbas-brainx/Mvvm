@@ -21,16 +21,18 @@ class ListViewModel: NSObject {
     lazy var heightForRow:CGFloat = {
         return CGFloat(150)
     }()
+    var listRouter:ListRouter?
     //MARK: - CLOSURE
     var reloadTableviewClosure:(()->())?
     
-    //MARK:- Initializer
-    init(view:UIViewController) {
+    //MARK:- INITIALIZER
+    init(router:ListRouter) {
         super.init()
+        self.listRouter = router
         fetchData()
     }
     
-    //MARK:- LOAD Data From Api
+    //MARK:- LOAD DATA FROM API
     func fetchData() {
         let apiService =  FakeAPIService()
         apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in
@@ -49,6 +51,10 @@ extension ListViewModel{
     //MARK: -  RETURN OBJECT AT SPECIFIC INDEX
     func object(for indexPath:IndexPath)->Picture{
         return self.pictures[indexPath.row]
+    }
+    
+    func navigateToDetailVC(indexPath:IndexPath){
+        listRouter?.pushVC(picture: self.object(for: indexPath))
     }
 }
 
