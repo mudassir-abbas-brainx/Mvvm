@@ -22,19 +22,17 @@ class ListViewModel: NSObject {
         return CGFloat(150)
     }()
     var listRouter:ListRouter?
-    weak var view:UIViewController?
     //MARK: - CLOSURE
     var reloadTableviewClosure:(()->())?
     
-    //MARK:- Initializer
-    init(view:UIViewController) {
+    //MARK:- INITIALIZER
+    init(router:ListRouter) {
         super.init()
-        self.view = view
-        listRouter = ListRouter(viewController: self.view)
+        self.listRouter = router
         fetchData()
     }
     
-    //MARK:- LOAD Data From Api
+    //MARK:- LOAD DATA FROM API
     func fetchData() {
         let apiService =  FakeAPIService()
         apiService.getPopularPictures(complete: ) { [weak self] (success, pictures, error) in

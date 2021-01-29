@@ -9,10 +9,10 @@ import UIKit
 
 class ListRouter: NSObject {
     //MARK:- PROPERTIES
-    weak var viewController: UIViewController?
+    weak var viewController: ListingVC?
     
     //MARK:- CLASS INITIALIZER
-    init(viewController:UIViewController?) {
+    init(viewController:ListingVC?) {
         super.init()
         self.viewController = viewController
     }
